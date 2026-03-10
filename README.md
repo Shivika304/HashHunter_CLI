@@ -1,3 +1,5 @@
+HashHunter CLI – A Java-based password auditing tool that automates dictionary attacks using John the Ripper.
+
 This is the Project made for Cracking the password using ** John the Ripper ** Tool.
 What this tool do:- 
   * John the Ripper (JtR) is a cybersecurity tool used to find passwords from their hashes.
