@@ -15,13 +15,15 @@ public class passCracker {
             System.out.print("Enter wordlist path: ");
             String wordlist = sc.nextLine();
 
+            System.out.println("\nHash type detected: MD5");
+            System.out.println("Running attack...\n");
+
            ProcessBuilder pb = new ProcessBuilder(
                     "john",
                     "--format=raw-md5",
                     "--wordlist=" + wordlist,
                     hashFile
             );
-
             pb.redirectErrorStream(true);
             Process process = pb.start();
 
@@ -30,10 +32,13 @@ public class passCracker {
 
             String line;
 
-            System.out.println("\nRunning John the Ripper...\n");
+            System.out.println("\nRunning John the Ripper...\n\n");
 
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                if(line.contains("(?)")){
+                    String password = line.split("\\s+")[0];
+                    System.out.println("\nPassword Found: " + password);
+                }
             }
 
             process.waitFor();
